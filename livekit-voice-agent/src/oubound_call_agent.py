@@ -17,7 +17,7 @@ SIP_OUTBOUND_TRUNK_ID = 'ST_AMQkwPXnuxCa'
 
 class Assistant(Agent):
     def __init__(self) -> None:
-        super().__init__(instructions="")
+        super().__init__(instructions=SOP_PROMPT)
         self.participant: rtc.RemoteParticipant | None = None
 
     def set_participant(self, participant: rtc.RemoteParticipant):
@@ -54,16 +54,15 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         llm=google.realtime.RealtimeModel(
             model="gemini-2.5-flash-native-audio-preview-09-2025",
-            voice="Puck",
+            voice="Zephyr",
             temperature=0.8,
-            instructions=SOP_PROMPT,  
+            # instructions=SOP_PROMPT,  
             thinking_config=types.ThinkingConfig(
-            include_thoughts=False,
-        ),
+                include_thoughts=False,
+            ),
         ),
         vad=silero.VAD.load(),
-        turn_detection=MultilingualModel(),
-        
+        turn_detection=MultilingualModel(),   
     )
 
     agent = Assistant()
@@ -73,7 +72,7 @@ async def entrypoint(ctx: agents.JobContext):
         phone_number = dial_info["phone_number"]
         participant_identity = phone_number
         
-        logger.info(f"📱 Dialing {phone_number}...")
+        logger.info(f"Dialing {phone_number}...")
         
         # Start session first (before dialing)
         session_started = asyncio.create_task(
