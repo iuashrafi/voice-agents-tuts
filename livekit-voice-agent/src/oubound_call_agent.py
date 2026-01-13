@@ -13,7 +13,7 @@ logger = logging.getLogger("gemini-live-voice-agent")
 
 load_dotenv(".env.local")
 
-SIP_OUTBOUND_TRUNK_ID = 'ST_AMQkwPXnuxCa'
+SIP_OUTBOUND_TRUNK_ID = 'ST_yokqU7WR5sof'
 
 class Assistant(Agent):
     def __init__(self) -> None:
@@ -46,7 +46,7 @@ async def entrypoint(ctx: agents.JobContext):
     if ctx.job.metadata:
         try:
             dial_info = json.loads(ctx.job.metadata)
-            logger.info(f"📞 Outbound call detected: {dial_info}")
+            logger.info(f"Outbound call detected: {dial_info}")
         except json.JSONDecodeError:
             logger.warning("Could not parse job metadata")
     
@@ -55,7 +55,7 @@ async def entrypoint(ctx: agents.JobContext):
         llm=google.realtime.RealtimeModel(
             model="gemini-2.5-flash-native-audio-preview-09-2025",
             voice="Zephyr",
-            temperature=0.8,
+            temperature=0.6,
             # instructions=SOP_PROMPT,  
             thinking_config=types.ThinkingConfig(
                 include_thoughts=False,
