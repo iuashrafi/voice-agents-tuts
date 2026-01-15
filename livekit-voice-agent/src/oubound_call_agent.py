@@ -6,7 +6,7 @@ from livekit import agents, rtc, api
 from livekit.agents import AgentServer, AgentSession, Agent, room_io
 from livekit.plugins import noise_cancellation, silero, google
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
-from prompts import SOP_PROMPT
+from prompts import SOP_PROMPT, POST_DISCHARGE_PROMPT
 import asyncio 
  
 logger = logging.getLogger("gemini-live-voice-agent")
@@ -17,7 +17,7 @@ SIP_OUTBOUND_TRUNK_ID = 'ST_yokqU7WR5sof'
 
 class Assistant(Agent):
     def __init__(self) -> None:
-        super().__init__(instructions=SOP_PROMPT)
+        super().__init__(instructions=POST_DISCHARGE_PROMPT)
         self.participant: rtc.RemoteParticipant | None = None
 
     def set_participant(self, participant: rtc.RemoteParticipant):
