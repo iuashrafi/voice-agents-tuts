@@ -1,0 +1,9 @@
+{
+  "trunk": {
+    "name": "My outbound trunk",
+    "address": "my-test-trunk-aui-flllp.pstn.twilio.com",
+    "numbers": ["+12184234108"],
+    "authUsername": "imtiaz",
+    "authPassword": "HsDssUNud8aWDF3"
+  }
+}

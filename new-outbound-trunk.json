@@ -1,0 +1,9 @@
+{
+  "sipTrunkId": "ST_yokqU7WR5sof",
+  "name": "My outbound trunk 2",
+  "address": "figitallabs.sip.frejun.ai",
+  "numbers": ["+918065171353"],
+  "transport": "SIP_TRANSPORT_TLS",
+  "authUsername": "imtiaz",
+  "authPassword": "HsDssUNud8aWDF3"
+}
